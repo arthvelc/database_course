@@ -1,10 +1,10 @@
 -- Crear la base de datos
-CREATE DATABASE IF NOT EXISTS AerolineasDB;
+CREATE DATABASE AerolineasDB; 
 USE AerolineasDB;
 
 -- Crear la tabla de tipos de aviones
 CREATE TABLE TipoAvion (
-    TipoAvionID INT PRIMARY KEY AUTO_INCREMENT,
+    TipoAvionID INT PRIMARY KEY NOT NULL IDENTITY (1,1),
     Nombre VARCHAR(50) NOT NULL,
     Fabricante VARCHAR(50) NOT NULL,
     CantidadAsientos INT NOT NULL
@@ -20,7 +20,7 @@ INSERT INTO TipoAvion (Nombre, Fabricante, CantidadAsientos) VALUES
 
 -- Crear la tabla de empleados
 CREATE TABLE Empleado (
-    EmpleadoID INT PRIMARY KEY AUTO_INCREMENT,
+    EmpleadoID INT PRIMARY KEY IDENTITY(1,1),
     Nombre VARCHAR(50) NOT NULL,
     ApellidoPaterno VARCHAR(50) NOT NULL,
     ApellidoMaterno VARCHAR(50) NOT NULL,
@@ -36,7 +36,7 @@ INSERT INTO Empleado (Nombre, ApellidoPaterno, ApellidoMaterno, Puesto) VALUES
 
 -- Crear la tabla de vuelos
 CREATE TABLE Vuelo (
-    VueloID INT PRIMARY KEY AUTO_INCREMENT,
+    VueloID INT PRIMARY KEY IDENTITY(1,1),
     Origen VARCHAR(100) NOT NULL,
     Destino VARCHAR(100) NOT NULL,
     Fecha DATE NOT NULL,
@@ -54,7 +54,7 @@ INSERT INTO Vuelo (Origen, Destino, Fecha, PrecioAsiento, LugaresDisponibles) VA
 
 -- Crear la tabla de clientes
 CREATE TABLE Cliente (
-    ClienteID INT PRIMARY KEY AUTO_INCREMENT,
+    ClienteID INT PRIMARY KEY IDENTITY(1,1),
     Nombre VARCHAR(50) NOT NULL,
     ApellidoPaterno VARCHAR(50) NOT NULL,
     ApellidoMaterno VARCHAR(50) NOT NULL,
@@ -72,7 +72,7 @@ INSERT INTO Cliente (Nombre, ApellidoPaterno, ApellidoMaterno, TipoCliente, Fech
 
 -- Crear la tabla de aerolíneas
 CREATE TABLE Aerolinea (
-    AerolineaID INT PRIMARY KEY AUTO_INCREMENT,
+    AerolineaID INT PRIMARY KEY IDENTITY(1,1),
     Nombre VARCHAR(100) NOT NULL,
     Nacionalidad VARCHAR(50) NOT NULL
 );
@@ -87,7 +87,7 @@ INSERT INTO Aerolinea (Nombre, Nacionalidad) VALUES
 
 -- Crear la tabla de compras
 CREATE TABLE Compra (
-    CompraID INT PRIMARY KEY AUTO_INCREMENT,
+    CompraID INT PRIMARY KEY IDENTITY(1,1),
     ClienteID INT NOT NULL,
     VueloID INT NOT NULL,
     FechaCompra DATE NOT NULL,
@@ -105,7 +105,7 @@ INSERT INTO Compra (ClienteID, VueloID, FechaCompra) VALUES
 
 -- Crear la tabla de domicilios
 CREATE TABLE Domicilio (
-    DomicilioID INT PRIMARY KEY AUTO_INCREMENT,
+    DomicilioID INT PRIMARY KEY IDENTITY(1,1),
     Calle VARCHAR(100) NOT NULL,
     Colonia VARCHAR(100) NOT NULL,
     Ciudad VARCHAR(100) NOT NULL,
@@ -119,7 +119,3 @@ INSERT INTO Domicilio (Calle, Colonia, Ciudad, CodigoPostal) VALUES
 ('Av. Insurgentes', 'Roma', 'Ciudad de México', '06700'),
 ('Calle 5', 'Juárez', 'Puebla', '72000'),
 ('Av. Constitución', 'Centro', 'Guadalajara', '44100');
-
--- Mostrar la base de datos creada
-SHOW TABLES;
-
